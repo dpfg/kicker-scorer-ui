@@ -1,0 +1,10 @@
+.userpic-container {
+  min-height: 60px;
+}
+
+.userpic-container img {
+  position: absolute;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+}
