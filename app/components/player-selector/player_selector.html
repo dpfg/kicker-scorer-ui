@@ -1,0 +1,18 @@
+<!-- Modal -->
+<div class="modal fade" id="{{ elementId }}" tabindex="-1" role="dialog" aria-labelledby="playerSelectorLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="playerSelectorLabel">Select player</h4>
+      </div>
+      <div class="modal-body">
+        <div class="list-group">
+          <button type='button' *ngFor="#player of players" class="list-group-item" (click)='selectPlayer(player)'>
+            {{player.username}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="row">
+  <player-selector elementId="playerSelector" (selected)="setPlayer($event)"></player-selector>
+  <div class="col-sm-6 col-sm-offset-3">
+    <form>
+      <h4>Blue Team</h4>
+      <div class="list-group">
+        <a href="#" data-toggle="modal" data-target="#playerSelector" class="list-group-item userpic-container" (click)='select(blue_team, 0)'>
+          <img src="{{ getUserPicPlaceholder() }}" class="img-responsive" alt="Blue Team goalkeeper's avatar">
+          <h5 class="list-group-item-heading">Goalkeeper</h5>
+          <p class="list-group-item-text" *ngIf='blue_team.goalkeeper'>
+            {{blue_team.goalkeeper.username}}
+          </p>
+          <p class="list-group-item-text text-danger" *ngIf="!blue_team || !blue_team.goalkeeper">None</p>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#playerSelector" class="list-group-item userpic-container" (click)='select(blue_team, 1)'>
+          <img src="{{ getUserPicPlaceholder() }}" class="img-responsive" alt="Blue Team forward's avatar">
+          <h5 class="list-group-item-heading">Forward</h5>
+          <p class="list-group-item-text" *ngIf="blue_team.forward">
+            {{blue_team.forward.username}}
+          </p>
+          <p class="list-group-item-text text-danger" *ngIf="!blue_team || !blue_team.forward">None</p>
+        </a>
+      </div>
+      <h4>Red Team</h4>
+      <div class="list-group">
+        <a href="#" data-toggle="modal" data-target="#playerSelector" class="list-group-item userpic-container" (click)='select(red_team, 0)'>
+          <img src="{{ getUserPicPlaceholder() }}" class="img-responsive" alt="Red Team goalkeeper's avatar">
+          <h5 class="list-group-item-heading">Goalkeeper</h5>
+          <p class="list-group-item-text" *ngIf="red_team.goalkeeper">
+            {{red_team.goalkeeper.username}}
+          </p>
+          <p class="list-group-item-text text-danger" *ngIf="!red_team || !red_team.goalkeeper">None</p>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#playerSelector" class="list-group-item userpic-container" (click)='select(red_team, 1)'>
+          <img src="{{ getUserPicPlaceholder() }}" class="img-responsive" alt="Red Team forward's avatar">
+          <h5 class="list-group-item-heading">Forward</h5>
+          <p class="list-group-item-text" *ngIf="red_team.forward">
+            {{red_team.forward.username}}
+          </p>
+          <p class="list-group-item-text text-danger" *ngIf="!red_team || !red_team.forward">None</p>
+        </a>
+      </div>
+      <button type="button" class="btn btn-primary btn-block"
+        [disabled]="!isValidTeamSetup()"
+        (click)="startMatch()">Start Match</button>
+    </form>
+  </div>
+</div>

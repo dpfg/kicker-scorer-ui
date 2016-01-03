@@ -1,0 +1,6 @@
+var Config;
+(function (Config) {
+    Config.baseURI = "http://localhost:5000";
+})(Config = exports.Config || (exports.Config = {}));
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL2FwaV9jb25maWcudHMiXSwibmFtZXMiOlsiQ29uZmlnIl0sIm1hcHBpbmdzIjoiQUFDQSxJQUFjLE1BQU0sQ0FFbkI7QUFGRCxXQUFjLE1BQU0sRUFBQyxDQUFDO0lBQ1RBLGNBQU9BLEdBQUdBLHVCQUF1QkEsQ0FBQUE7QUFDOUNBLENBQUNBLEVBRmEsTUFBTSxHQUFOLGNBQU0sS0FBTixjQUFNLFFBRW5CIiwiZmlsZSI6InNlcnZpY2VzL2FwaV9jb25maWcuanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbmV4cG9ydCBtb2R1bGUgQ29uZmlnIHtcbiAgZXhwb3J0IGxldCBiYXNlVVJJID0gXCJodHRwOi8vbG9jYWxob3N0OjUwMDBcIlxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
