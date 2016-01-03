@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {
   RouteConfig,
   ROUTER_DIRECTIVES
@@ -8,6 +8,7 @@ import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
 import {GetStartedComponent} from '../getstarted/getstarted';
 import {NewGameComponent} from '../new-game/new_game';
+import {GameDetailsComponent} from '../game-details/game-details.cmp';
 
 import {MenuCmp} from '../menu/menu.cmp';
 
@@ -21,6 +22,7 @@ import {MenuCmp} from '../menu/menu.cmp';
   { path: '/',                as: 'Home',           component: HomeCmp},
   { path: '/get-started',     as: 'GetStarted',     component: GetStartedComponent },
   { path: '/new-game',        as: 'NewGame',        component: NewGameComponent },
+  { path: '/game/:id',        as: 'GameDetails',    component: GameDetailsComponent },
   { path: '/about', component: AboutCmp, as: 'About' }
 ])
 export class AppCmp {}

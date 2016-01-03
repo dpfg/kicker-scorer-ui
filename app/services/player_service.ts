@@ -16,7 +16,7 @@ export class PlayerService {
   public getAllPlayers(): Observable<Array<Player>> {
     return this.http.get(Config.baseURI + '/communities/TCCC/players')
       .map( (res: Response) => {
-        return res.json()['players'].map(pl => new Player(pl.username));
+        return res.json()['players'].map(pl => new Player(Number(pl.id), pl.username));
       });
   }
 

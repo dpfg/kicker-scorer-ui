@@ -1,3 +1,4 @@
 export class Player {
-  constructor(public username: string) {}
+  constructor(public id: number,
+              public username: string) {}
 }

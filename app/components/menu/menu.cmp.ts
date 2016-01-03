@@ -8,8 +8,5 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
   directives: [ROUTER_DIRECTIVES]
 })
 export class MenuCmp {
-  constructor() {
-
-  }
 
 }

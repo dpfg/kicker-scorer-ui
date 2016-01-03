@@ -1,4 +1,4 @@
 
 export module Config {
-  export let baseURI = "http://localhost:5000"
+  export let baseURI = 'http://localhost:5000';
 }

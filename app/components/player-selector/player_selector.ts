@@ -3,7 +3,7 @@ import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core'
 import {Player} from '../../models/player';
 import {PlayerService} from '../../services/player_service';
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
   selector: 'player-selector',
@@ -11,7 +11,7 @@ declare var jQuery:any;
 })
 export class PlayerSelectorComponent {
   @Input() elementId = 'playerSelector';
-  @Output() selected = new EventEmitter();
+  @Output() onSelected = new EventEmitter();
   players: Array<Player>;
 
   constructor(private playerService: PlayerService, private elementRef: ElementRef) {
@@ -21,8 +21,8 @@ export class PlayerSelectorComponent {
   }
 
   selectPlayer(player: Player) {
-    console.log("selected in popup");
+    console.log('selected in popup');
     jQuery(this.elementRef.nativeElement).find('.modal').modal('hide');
-    this.selected.next(player);
+    this.onSelected.next(player);
   }
 }

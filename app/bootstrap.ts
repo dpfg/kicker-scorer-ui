@@ -18,7 +18,7 @@ let APP_SERVICES = [
 export class JSONBaseRequest extends BaseRequestOptions {
     constructor() {
         super();
-        this.headers.append("Content-Type", "application/json");
+        this.headers.append('Content-Type', 'application/json');
     }
 }
 

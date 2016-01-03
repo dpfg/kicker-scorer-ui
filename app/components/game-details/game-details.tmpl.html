@@ -1,0 +1,8 @@
+<h3>Game Details</h3>
+id: {{match.id}}
+
+<div *ngIf="match.id !== -1">
+  <button (click)="addGoal(match.blue_team)">Goal! {{ match.blue_team.name }}</button>
+
+  <button (click)="addGoal(match.red_team)">Goal! {{ match.red_team.name }}</button>
+</div>
