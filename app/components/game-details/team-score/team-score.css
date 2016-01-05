@@ -1,0 +1,17 @@
+.panel-heading {
+  padding: 1px 5px;
+}
+
+.panel-heading h6 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}
+
+.score {
+  font-size: 56px;
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+}

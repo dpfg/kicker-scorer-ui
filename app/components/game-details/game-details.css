@@ -1,0 +1,18 @@
+.score-container {
+  width: 300px;
+  margin: 0px auto;
+}
+
+.score-container team-score {
+  display: inline-block;
+}
+
+.match-date {
+  display: block;
+}
+
+.match-duration {
+  font-weight: bolder;
+  font-size: 24px;
+  display: block;
+}

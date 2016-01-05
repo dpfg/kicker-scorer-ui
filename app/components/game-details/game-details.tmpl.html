@@ -1,8 +1,23 @@
-<h3>Game Details</h3>
-id: {{match.id}}
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <span class="match-date">{{ match.date | date }}</span>
+    <span class="match-duration">00:00</span>
+  </div>
+</div>
 
-<div *ngIf="match.id !== -1">
-  <button (click)="addGoal(match.blue_team)">Goal! {{ match.blue_team.name }}</button>
+<div *ngIf="match.id !== -1" class="row">
+  <team-score class="col-xs-6"
+                [team]="match.blue_team"
+                [score]="getTeamScore(match.blue_team)"
+                (goal)="addGoal(match.blue_team)">
+  </team-score>
 
-  <button (click)="addGoal(match.red_team)">Goal! {{ match.red_team.name }}</button>
+  <team-score class="col-xs-6"
+                [team]="match.red_team"
+                [score]="getTeamScore(match.red_team)"
+                (goal)="addGoal(match.red_team)"></team-score>
+</div>
+
+<div *ngIf="match.id !== -1" class="row">
+  <goals-list class="col-xs-12" [match]="match"></goals-list>
 </div>

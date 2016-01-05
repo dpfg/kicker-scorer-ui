@@ -1,0 +1,21 @@
+<!-- <template *ngIf="match.goals"> -->
+  <h4>Goals List</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Team Name</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="#goal of getGoalsDesc()">
+        <td>
+          <button (click)="delete(goal)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+        </td>
+        <td>{{ getTeamName(goal.team_id) }}</td>
+        <td>{{ goal.created | date:'shortTime' }}</td>
+      </tr>
+    </tbody>
+  </table>
+<!-- </template> -->
