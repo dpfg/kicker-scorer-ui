@@ -4,16 +4,18 @@
     <thead>
       <tr>
         <th></th>
-        <th>Team Name</th>
+        <th>Team</th>
+        <th>Player</th>
         <th>Time</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="#goal of getGoalsDesc()">
         <td>
-          <button (click)="delete(goal)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+          <button [disabled]="match.completed" (click)="delete(goal)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
         </td>
-        <td>{{ getTeamName(goal.team_id) }}</td>
+        <td>{{ match.getTeam(goal.team_id).name }}</td>
+        <td>{{ getPlayerName(goal) }}</td>
         <td>{{ goal.created | date:'shortTime' }}</td>
       </tr>
     </tbody>

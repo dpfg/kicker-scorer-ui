@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Match list</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Blue Team</th>
+          <th>Red Team</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="#match of matchList" (click)="navigateTo(match)">
+          <td class="text-center"></td>
+          <td>{{match.blue_team.name}}</td>
+          <td>{{match.red_team.name}}</td>
+          <td>{{ match.getTeamScore(match.blue_team) }} : {{ match.getTeamScore(match.red_team) }}</td>
+          <td>{{match.date | date:'shortDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

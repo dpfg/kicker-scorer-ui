@@ -20,15 +20,36 @@ export class NewGameComponent {
   private toSelectTeam: Team;
   private toSelectPlayer: number;
 
+  private errors: Array<string> = [];
+
   constructor(private matchService: MatchService, private router: Router) {
     this.blue_team = new Team();
     this.red_team = new Team();
   }
 
-  private isValidTeamSetup() {
-    return this.isTeamNotEmpty(this.blue_team) && this.isTeamNotEmpty(this.red_team);
+  private validateRequiredTeamSetup(): boolean {
+    if (!(this.blue_team && this.red_team)) {
+      return false;
+    }
+    if(!this.blue_team.isComplete() || !this.red_team.isComplete()) {
+      return false;
+    }
+    return true;
   }
 
+  private validateTeamSetup() {
+    this.errors = [];
+    if (this.red_team.equal(this.blue_team)) {
+      this.errors.push('You cannot select the same players for different teams.');
+      return false;
+    }
+
+    if (this.red_team.hasPlayers(this.blue_team.goalkeeper, this.blue_team.forward)) {
+      this.errors.push('You cannot select the same players for different teams.');
+      return false;
+    }
+    return true;
+  }
 
   private getUserPicPlaceholder() {
     return 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350×150&w=40&h=40';
@@ -50,7 +71,9 @@ export class NewGameComponent {
   }
 
   private startMatch() {
-    console.log('start match');
+    if (!this.validateTeamSetup()) {
+      return;
+    }
     this.matchService
       .createMatch(this.blue_team, this.red_team)
       .subscribe((match: Match) => this.router.navigate(['/GameDetails', { 'id': match.id }]), this.onError);
@@ -58,9 +81,5 @@ export class NewGameComponent {
 
   private onError() {
     console.log('on error');
-  }
-
-  private isTeamNotEmpty(team: Team) {
-    return team !== null && team.isComplete();
   }
 }

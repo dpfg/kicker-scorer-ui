@@ -1,6 +1,9 @@
 <div class="row">
   <player-selector elementId="playerSelector" (onSelected)="setPlayer($event)"></player-selector>
   <div class="col-sm-6 col-sm-offset-3">
+    <div class="alert alert-danger" role="alert" *ngIf="errors.length !== 0">
+      <p *ngFor="#msg of errors">{{ msg }}</p>
+    </div>
     <form>
       <h4>Blue Team</h4>
       <div class="list-group">
@@ -41,7 +44,7 @@
         </a>
       </div>
       <button type="button" class="btn btn-primary btn-block"
-        [disabled]="!isValidTeamSetup()"
+        [disabled]="!validateRequiredTeamSetup()"
         (click)="startMatch()">Start Match</button>
     </form>
   </div>

@@ -8,7 +8,8 @@ import {HomeCmp} from '../home/home';
 import {AboutCmp} from '../about/about';
 import {GetStartedComponent} from '../getstarted/getstarted';
 import {NewGameComponent} from '../new-game/new_game';
-import {GameDetailsComponent} from '../game-details/game-details.cmp';
+import {GameDetailsComponent} from '../match-details/match-details.cmp';
+import {MatchListCmp} from '../match-list/match-list.cmp';
 
 import {MenuCmp} from '../menu/menu.cmp';
 
@@ -21,8 +22,9 @@ import {MenuCmp} from '../menu/menu.cmp';
 @RouteConfig([
   { path: '/',                as: 'Home',           component: HomeCmp},
   { path: '/get-started',     as: 'GetStarted',     component: GetStartedComponent },
-  { path: '/new-game',        as: 'NewGame',        component: NewGameComponent },
-  { path: '/game/:id',        as: 'GameDetails',    component: GameDetailsComponent },
+  { path: '/new-match',       as: 'NewGame',        component: NewGameComponent },
+  { path: '/match/:id',       as: 'GameDetails',    component: GameDetailsComponent },
+  { path: '/matches',         as: 'MatchList',      component: MatchListCmp },
   { path: '/about', component: AboutCmp, as: 'About' }
 ])
 export class AppCmp {}

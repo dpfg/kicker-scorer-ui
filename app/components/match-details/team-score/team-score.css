@@ -9,9 +9,21 @@
   text-align: center;
 }
 
+.panel-body {
+  padding: 8px;
+}
+
 .score {
   font-size: 56px;
   font-weight: bold;
   display: inline-block;
   width: 100%;
+}
+
+.btn-group {
+  min-width: 100%;
+}
+
+.btn-group .btn {
+  width: 50%;
 }

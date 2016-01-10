@@ -7,8 +7,8 @@ import {MatchService} from '../../../services/match_service';
   selector: 'goals-list'
 })
 @View({
-  templateUrl: './components/game-details/goals-list/goals-list.tmpl.html',
-  styleUrls: ['./components/game-details/goals-list/goals-list.css']
+  templateUrl: './components/match-details/goals-list/goals-list.tmpl.html',
+  styleUrls: ['./components/match-details/goals-list/goals-list.css']
 })
 export class GoalsListCmp {
   @Input() match: Match;
@@ -17,11 +17,10 @@ export class GoalsListCmp {
 
   }
 
-  getTeamName(team_id: number): string {
-    if(this.match.red_team.id === team_id) {
-      return this.match.red_team.name;
-    } else if(this.match.blue_team.id === team_id) {
-      return this.match.blue_team.name;
+  getPlayerName(goal: MatchGoal): string {
+    let player = this.match.getPlayer(goal.team_id, goal.player_id);
+    if (player) {
+      return player.username;
     }
     return '';
   }

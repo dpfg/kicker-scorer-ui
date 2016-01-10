@@ -3,7 +3,7 @@ import {Http, Response, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 
-import {Team, Match, MatchGoal} from '../models/game';
+import {Team, Match, MatchGoal, Player} from '../models/game';
 import {Config} from './api_config';
 
 @Injectable()
@@ -27,9 +27,17 @@ export class MatchService {
     return this.http.get(requestURI).map((req: Response) => Match.fromJSON(req.json()));
   }
 
-  public addGoal(match: Match, team: Team): Observable<Match> {
-    let requestURI = `${Config.baseURI}/matches/${match.id}/${team.id}/goal`;
-    return this.http.post(requestURI, null).map( res => Match.fromJSON(res.json()));
+  public getAll(): Observable<Array<Match>> {
+    var requestURI = `${Config.baseURI}/communities/TCCC/matches`;
+    return this.http.get(requestURI).map( (res:Response) => res.json().matches.map( m => Match.fromJSON(m)));
+  }
+
+  public addGoal(match: Match, team: Team, player?: Player): Observable<MatchGoal> {
+    var requestURI = `${Config.baseURI}/matches/${match.id}/${team.id}/goal`;
+    if (player) {
+      requestURI += '?player=' + player.id;
+    }
+    return this.http.post(requestURI, null).map( res => MatchGoal.fromJSON(res.json()));
   }
 
   public deleteGoal(goal: MatchGoal): Observable<void> {

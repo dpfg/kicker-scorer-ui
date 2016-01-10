@@ -1,4 +1,4 @@
-import {Team} from './team';
+import {Team, Player} from './game';
 
 export class Match {
   public goals: Array<MatchGoal>;
@@ -6,7 +6,8 @@ export class Match {
   constructor(public id: number,
     public blue_team: Team,
     public red_team: Team,
-    public date: Date) {
+    public date: Date,
+    public completed: boolean) {
 
   }
 
@@ -15,7 +16,8 @@ export class Match {
                   data.id,
                   Team.fromJSON(data.teams[0]),
                   Team.fromJSON(data.teams[1]),
-                  new Date(data.date)
+                  new Date(data.date),
+                  data.completed
                 );
     if(data.goals) {
       let goals = data.goals.map( g => MatchGoal.fromJSON(g));
@@ -23,6 +25,30 @@ export class Match {
     }
     console.log(match);
     return match;
+  }
+
+  getTeamScore(team: Team) {
+    return this.goals.filter( g => g.team_id === team.id).length;
+  }
+
+  getTeam(team_id: number): Team {
+    if(this.red_team.id === team_id) {
+      return this.red_team;
+    } else if(this.blue_team.id === team_id) {
+      return this.blue_team;
+    }
+    return null;
+  }
+
+  getPlayer(team_id:number, player_id: number): Player {
+    let team = this.getTeam(team_id);
+    if (player_id === team.goalkeeper.id) {
+      return team.goalkeeper;
+    } else if (player_id === team.forward.id) {
+      return team.forward;
+    }
+
+    return null;
   }
 
 }

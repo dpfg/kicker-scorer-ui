@@ -16,13 +16,30 @@ export class Team {
     return team;
   }
 
-  isComplete() {
-    return this.goalkeeper !== null && this.forward !== null;
+  isComplete(): boolean {
+    if (this.goalkeeper && this.forward) {
+      return true;
+    }
+    return false;
   }
 
   isPersisted() {
     return this.id !== null;
   }
 
+  equal(team: Team):boolean {
+    if (team.goalkeeper.id !== this.goalkeeper.id) {
+      return false;
+    }
+    if (team.forward.id !== this.forward.id) {
+      return false;
+    }
+
+    return true;
+  }
+
+  hasPlayers(...players: Player[]):boolean {
+    return players.filter(p => p.id === this.goalkeeper.id || p.id === this.forward.id).length > 0;
+  }
 
 }

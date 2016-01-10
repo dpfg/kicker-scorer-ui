@@ -7,7 +7,8 @@ declare var jQuery: any;
 
 @Component({
   selector: 'player-selector',
-  templateUrl: './components/player-selector/player_selector.html'
+  templateUrl: './components/player-selector/player_selector.html',
+  styleUrls: ['./components/player-selector/player_selector.css']
 })
 export class PlayerSelectorComponent {
   @Input() elementId = 'playerSelector';
@@ -25,4 +26,9 @@ export class PlayerSelectorComponent {
     jQuery(this.elementRef.nativeElement).find('.modal').modal('hide');
     this.onSelected.next(player);
   }
+
+  private getUserPicPlaceholder() {
+    return 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350×150&w=40&h=40';
+  }
+
 }

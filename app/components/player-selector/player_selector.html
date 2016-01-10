@@ -8,8 +8,9 @@
       </div>
       <div class="modal-body">
         <div class="list-group">
-          <button type='button' *ngFor="#player of players" class="list-group-item" (click)='selectPlayer(player)'>
-            {{player.username}}
+          <button type='button' *ngFor="#player of players" class="list-group-item clearfix" (click)='selectPlayer(player)'>
+            <img src="{{ getUserPicPlaceholder() }}" class="img-responsive" alt="Player avatar">
+            <h5>{{player.username}}</h5>
           </button>
         </div>
       </div>

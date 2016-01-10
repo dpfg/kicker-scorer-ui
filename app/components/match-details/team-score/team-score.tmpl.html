@@ -1,0 +1,13 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h6>{{ team.name }}</h6>
+  </div>
+  <div class="panel-body">
+    <span class="score text-center" (click)="onGoal()">{{ score }}</span>
+    <div class="btn-group" role="group" aria-label="...">
+      <button [disabled]="disabled" class="btn btn-success btn-lg" (click)="onGoal(team.goalkeeper)">G</button>
+      <button [disabled]="disabled" class="btn btn-success btn-lg" (click)="onGoal(team.forward)">F</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<template [ngIf]="match">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <span class="match-date">{{ match.date | date }}</span>
+      <match-timer [started]="match.date" *ngIf="!isScoreComplete() || !match.completed"></match-timer>
+    </div>
+  </div>
+
+  <div *ngIf="match.id !== -1" class="row">
+    <team-score class="col-xs-6"
+                  [team]="match.blue_team"
+                  [score]="getTeamScore(match.blue_team)"
+                  [disabled] ="isScoreComplete() || match.completed"
+                  (goal)="addGoal($event.team, $event.player)">
+    </team-score>
+
+    <team-score class="col-xs-6"
+                  [team]="match.red_team"
+                  [score]="getTeamScore(match.red_team)"
+                  [disabled] ="isScoreComplete() || match.completed"
+                  (goal)="addGoal($event.team, $event.player)">
+    </team-score>
+  </div>
+
+  <div *ngIf="isScoreComplete() && !match.completed" class="row">
+    <div class="col-xs-8 col-md-4 col-xs-offset-2 col-md-offset-4">
+      <button (click)="finishMatch()" class="btn btn-block btn-danger btn-lg">
+        <i class="glyphicon glyphicon-ok"></i>
+        Finish Match!
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="match.id !== -1" class="row">
+    <goals-list class="col-xs-12" [match]="match"></goals-list>
+  </div>
+</template>
