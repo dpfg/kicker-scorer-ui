@@ -8,6 +8,9 @@
       <button [disabled]="disabled" class="btn btn-success btn-lg" (click)="onGoal(team.goalkeeper)">G</button>
       <button [disabled]="disabled" class="btn btn-success btn-lg" (click)="onGoal(team.forward)">F</button>
     </div>
+    <hr>
+    <span class="team-player"><span class="role">GK:</span> {{ team.goalkeeper.username }}</span>
+    <span class="team-player"><span class="role">FW:</span> {{ team.forward.username }}</span>
 
   </div>
 </div>

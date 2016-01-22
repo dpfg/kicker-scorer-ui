@@ -7,6 +7,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .panel-body {
@@ -26,4 +28,12 @@
 
 .btn-group .btn {
   width: 50%;
+}
+
+.team-player {
+  display: block;
+}
+
+.team-player .role {
+  font-weight: bold;
 }
