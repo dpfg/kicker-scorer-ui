@@ -51,7 +51,7 @@ export const NPM_DEPENDENCIES = [
   { src: 'angular2/bundles/http.min.js', inject: 'libs', dest: LIB_DEST },
 
   // Angular2 modules
-  // { src: 'node_modules/ng2-table/*.js', inject: 'libs', dest: LIB_DEST },
+  // { src: 'angular2-jwt/angular2-jwt.js', inject: 'shims', dest: LIB_DEST },
   // { src: 'node_modules/rxjs/*.js', inject: true, dest: LIB_DEST },
 
   { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, dest: CSS_DEST }

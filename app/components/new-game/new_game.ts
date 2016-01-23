@@ -1,9 +1,11 @@
 import {Component, View} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Router, CanActivate} from 'angular2/router';
+
 import {Team, Match} from '../../models/game';
 
 import {PlayerSelectorComponent} from '../player-selector/player_selector';
 import {MatchService} from '../../services/match_service';
+import {checkAuthAndRedirect} from "../../services/auth-service";
 
 @Component({
   selector: 'new-game'
@@ -13,6 +15,7 @@ import {MatchService} from '../../services/match_service';
   styleUrls: ['./components/new-game/style.css'],
   directives: [PlayerSelectorComponent]
 })
+@CanActivate(() => checkAuthAndRedirect())
 export class NewGameComponent {
   blue_team: Team;
   red_team: Team;

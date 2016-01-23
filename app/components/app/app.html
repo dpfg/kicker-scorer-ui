@@ -1,5 +1,8 @@
-<menu></menu>
 
-<div class="container">
-  <router-outlet></router-outlet>
+<menu *ngIf="isAuthenticated()"></menu>
+
+<div [class.login-bd]="!isAuthenticated()" class="body">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

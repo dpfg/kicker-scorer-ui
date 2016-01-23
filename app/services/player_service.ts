@@ -1,5 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
+import {AuthHttp} from  'angular2-jwt/angular2-jwt';
+
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -9,14 +11,14 @@ import {Config} from './api_config';
 @Injectable()
 export class PlayerService {
 
-  constructor(private http: Http) {
+  constructor(private http: AuthHttp) {
 
   }
 
   public getAllPlayers(): Observable<Array<Player>> {
     return this.http.get(Config.baseURI + '/communities/TCCC/players')
       .map( (res: Response) => {
-        return res.json()['players'].map(pl => new Player(Number(pl.id), pl.username));
+        return res.json()['players'].map( (pl:any) => new Player(Number(pl.id), pl.username));
       });
   }
 

@@ -1,9 +1,10 @@
 import {Component, View} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Router, CanActivate} from 'angular2/router';
 
 import {MatchService} from '../../services/match_service';
 
 import {Match} from '../../models/game';
+import {AuthService, checkAuthAndRedirect} from "../../services/auth-service";
 
 @Component({
   selector: 'match-list'
@@ -12,11 +13,12 @@ import {Match} from '../../models/game';
   templateUrl: './components/match-list/match-list.tmpl.html',
   styleUrls: ['./components/match-list/match-list.css']
 })
-export class MatchListCmp {
+@CanActivate(() => checkAuthAndRedirect())
+export class MatchListCmp  {
   matchList: Array<Match>;
 
   constructor(private matchService: MatchService, private router: Router) {
-    matchService.getAll().subscribe( ml => this.matchList = ml );
+    this.matchService.getAll().subscribe( ml => this.matchList = ml );
   }
 
   navigateTo(match: Match) {

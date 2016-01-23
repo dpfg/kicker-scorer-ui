@@ -1,11 +1,14 @@
 import {Component} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Router, CanActivate} from 'angular2/router';
+import {checkAuthAndRedirect} from "../../services/auth-service";
+
 
 @Component({
   selector: 'get-started',
   templateUrl: './components/getstarted/getstarted.html'
 })
-export class GetStartedComponent {
+@CanActivate(() => checkAuthAndRedirect())
+export class GetStartedComponent  {
   constructor(private router: Router) {
 
   }

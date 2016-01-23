@@ -5,7 +5,7 @@ import {Pipe, PipeTransform} from 'angular2/core';
   pure: false
 })
 export class DurationFormatPipe implements PipeTransform {
-  private placeholder = "-- : --";
+  private placeholder = '-- : --';
 
   transform(value: any, args: string[]): any {
     let durationMS = Number(value);

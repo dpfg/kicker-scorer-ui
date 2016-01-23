@@ -1,5 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http, Response, RequestOptions} from 'angular2/http';
+import {AuthHttp} from  'angular2-jwt/angular2-jwt';
+
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -9,7 +11,7 @@ import {Config} from './api_config';
 @Injectable()
 export class MatchService {
 
-  constructor(private http: Http) {
+  constructor(private http: AuthHttp) {
 
   }
 
