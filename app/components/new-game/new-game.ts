@@ -4,15 +4,15 @@ import {Router, CanActivate} from 'angular2/router';
 import {Team, Match} from '../../models/game';
 
 import {PlayerSelectorComponent} from '../player-selector/player_selector';
-import {MatchService} from '../../services/match_service';
-import {checkAuthAndRedirect} from "../../services/auth-service";
+import {MatchService} from '../../services/match';
+import {checkAuthAndRedirect} from "../../services/auth";
 
 @Component({
   selector: 'new-game'
 })
 @View({
-  templateUrl: './components/new-game/new_game.html',
-  styleUrls: ['./components/new-game/style.css'],
+  templateUrl: './components/new-game/new-game.html',
+  styleUrls: ['./components/new-game/new-game.css'],
   directives: [PlayerSelectorComponent]
 })
 @CanActivate(() => checkAuthAndRedirect())
@@ -59,7 +59,6 @@ export class NewGameComponent {
   }
 
   private select(team: Team, pl: number) {
-    console.log('select: ' + team + ', pl: ' + pl);
     this.toSelectTeam = team;
     this.toSelectPlayer = pl;
   }

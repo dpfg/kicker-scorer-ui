@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {CanActivate} from "angular2/router";
-import {checkAuthAndRedirect} from "../../services/auth-service";
+import {checkAuthAndRedirect} from "../../services/auth";
 
 @Component({
     selector: 'home',
@@ -8,6 +8,6 @@ import {checkAuthAndRedirect} from "../../services/auth-service";
     styleUrls: ['./components/home/home.css']
 })
 @CanActivate(() => checkAuthAndRedirect())
-export class HomeCmp {
+export class HomeComponent {
 
 }

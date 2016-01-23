@@ -1,12 +1,12 @@
 import {Injectable} from 'angular2/core';
 import {Http, Response, RequestOptions} from 'angular2/http';
-import {AuthHttp} from  'angular2-jwt/angular2-jwt';
+import {AuthHttp} from  '../utils/jwt';
 
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 
 import {Team, Match, MatchGoal, Player} from '../models/game';
-import {Config} from './api_config';
+import {Config} from './api-config';
 
 @Injectable()
 export class MatchService {
@@ -43,7 +43,6 @@ export class MatchService {
   }
 
   public deleteGoal(goal: MatchGoal): Observable<void> {
-    console.log(goal);
     let requestURI = `${Config.baseURI}/goals/${goal.id}`;
     return this.http.delete(requestURI).map( res => {} );
   }

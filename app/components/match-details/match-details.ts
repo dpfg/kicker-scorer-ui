@@ -2,18 +2,18 @@ import {Component, View} from 'angular2/core';
 import {RouteParams, Router, CanActivate} from 'angular2/router';
 
 import {Match, Team, Player} from '../../models/game';
-import {MatchService} from '../../services/match_service';
+import {MatchService} from '../../services/match';
 
-import {TeamScoreCmp} from './team-score/team-score.cmp';
-import {GoalsListCmp} from './goals-list/goals-list.cmp';
-import {MatchTimerCmp} from './match-timer.cmp';
-import {checkAuthAndRedirect} from "../../services/auth-service";
+import {TeamScoreCmp} from './team-score/team-score';
+import {GoalsListCmp} from './goals-list/goals-list';
+import {MatchTimerCmp} from './match-timer';
+import {checkAuthAndRedirect} from "../../services/auth";
 
 @Component({
     selector: 'game-details'
 })
 @View({
-    templateUrl: './components/match-details/match-details.tmpl.html',
+    templateUrl: './components/match-details/match-details.html',
     styleUrls: ['./components/match-details/match-details.css'],
     directives: [TeamScoreCmp, GoalsListCmp, MatchTimerCmp]
 })

@@ -1,12 +1,12 @@
 import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import {AuthHttp} from  'angular2-jwt/angular2-jwt';
+import {AuthHttp} from  '../utils/jwt';
 
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 
 import {Player} from '../models/player';
-import {Config} from './api_config';
+import {Config} from './api-config';
 
 @Injectable()
 export class PlayerService {

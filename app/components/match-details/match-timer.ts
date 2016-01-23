@@ -1,7 +1,7 @@
 
 import {Component, Input} from 'angular2/core';
 
-import {DurationFormatPipe} from '../../pipes/duration.pipe';
+import {DurationFormatPipe} from '../../pipes/duration';
 
 @Component({
   selector: 'match-timer',

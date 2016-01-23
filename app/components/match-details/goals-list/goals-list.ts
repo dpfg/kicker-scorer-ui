@@ -1,13 +1,13 @@
 import {Component, View, Input} from 'angular2/core';
 
-import {Match, Team, MatchGoal} from '../../../models/game';
-import {MatchService} from '../../../services/match_service';
+import {Match, MatchGoal} from '../../../models/game';
+import {MatchService} from '../../../services/match';
 
 @Component({
   selector: 'goals-list'
 })
 @View({
-  templateUrl: './components/match-details/goals-list/goals-list.tmpl.html',
+  templateUrl: './components/match-details/goals-list/goals-list.html',
   styleUrls: ['./components/match-details/goals-list/goals-list.css']
 })
 export class GoalsListCmp {

@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {Router, CanActivate} from 'angular2/router';
-import {checkAuthAndRedirect} from "../../services/auth-service";
+import {checkAuthAndRedirect} from "../../services/auth";
 
 
 @Component({

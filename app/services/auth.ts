@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import {Config} from './api_config';
-import {JwtHelper} from "angular2-jwt/angular2-jwt";
+import {Config} from './api-config';
+import {JwtHelper, tokenNotExpired} from '../utils/jwt';
 import {RouteErrorHandler} from "../components/app/app";
 
 @Injectable()
@@ -19,7 +19,7 @@ export class AuthService {
                 let token = res.json().access_token;
                 localStorage.setItem('access_token', token);
             },
-            () => console.log("authentication error")
+            () => console.error("authentication error")
         );
     }
 
@@ -34,8 +34,7 @@ export class AuthService {
 }
 
 export function checkAuth() {
-    let token = localStorage.getItem('access_token');
-    return token != null && !(new JwtHelper().isTokenExpired(token))
+    return tokenNotExpired('access_token');
 }
 
 export function checkAuthAndRedirect():Promise<boolean> {
