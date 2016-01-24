@@ -45,6 +45,6 @@ export class GameDetailsComponent {
     }
 
     finishMatch() {
-        this.router.navigate(['Home']);
+        this.router.navigate(['/GetStarted']);
     }
 }

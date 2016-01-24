@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnChanges} from 'angular2/core';
 import {
     RouteConfig,
     ROUTER_DIRECTIVES,
@@ -28,7 +28,7 @@ export class RouteErrorHandler {
   directives: [MenuComponent, ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  { path: '/',                as: 'Home',           component: HomeComponent},
+  { path: '/',                as: 'Home',           redirectTo: ['/GetStarted']},
   { path: '/login',           as: 'Login',          component: LoginComponent},
   { path: '/get-started',     as: 'GetStarted',     component: GetStartedComponent },
   { path: '/new-match',       as: 'NewGame',        component: NewGameComponent },

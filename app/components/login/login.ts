@@ -12,11 +12,13 @@ import {AuthService} from '../../services/auth';
 export class LoginComponent {
 
     constructor(private loginService:AuthService, private router:Router) {
+      console.log("should log out");
+      // loginService.logout();
     }
 
     logIn(email, password) {
         this.loginService.authenticate(email, password).add(() => {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/GetStarted']);
         });
     }
 }

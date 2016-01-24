@@ -22,8 +22,7 @@ export class Match {
     if(data.goals) {
       let goals = data.goals.map( g => MatchGoal.fromJSON(g));
       match.goals = goals;
-    }
-    console.log(match);
+    }    
     return match;
   }
 
