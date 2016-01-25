@@ -11,14 +11,18 @@ import {AuthService} from '../../services/auth';
 })
 export class LoginComponent {
 
+    private error: string;
+
     constructor(private loginService:AuthService, private router:Router) {
-      console.log("should log out");
-      // loginService.logout();
+      loginService.logout();
     }
 
     logIn(email, password) {
-        this.loginService.authenticate(email, password).add(() => {
-            this.router.navigate(['/GetStarted']);
-        });
+        this.loginService.authenticate(email, password).subscribe(
+          () => this.router.navigate(['/GetStarted']),
+          (e) => this.error = e.description
+        );
     }
+
+
 }

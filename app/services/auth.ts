@@ -1,26 +1,31 @@
 import {Injectable} from 'angular2/core';
+import {Router} from 'angular2/router';
 import {Http, Response} from 'angular2/http';
 import {Config} from './api-config';
 import {JwtHelper, tokenNotExpired} from '../utils/jwt';
 import {RouteErrorHandler} from "../components/app/app";
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class AuthService {
     private jwtHelper;
 
-    constructor(private http:Http) {
+    constructor(private http:Http, private router: Router) {
         this.jwtHelper = new JwtHelper();
     }
 
     authenticate(username, password) {
         let ob = this.http.post(Config.authURI, JSON.stringify({username: username, password: password}));
-        return ob.subscribe(
-            (res:Response) => {
-                let token = res.json().access_token;
-                localStorage.setItem('access_token', token);
-            },
-            () => console.error("authentication error")
-        );
+        return Observable.create( observer => {
+          ob.subscribe(
+              (res:Response) => {
+                  let token = res.json().access_token;
+                  localStorage.setItem('access_token', token);
+                  observer.next();
+              },
+              (e) => observer.error(e.json())
+          );
+        });
     }
 
     isAuthenticated() {
@@ -30,6 +35,11 @@ export class AuthService {
         }
 
         return token && !this.jwtHelper.isTokenExpired(token);
+    }
+
+    logout() {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/Login']);
     }
 }
 
