@@ -12,12 +12,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="#match of matchList" (click)="navigateTo(match)">
-          <td class="text-center"></td>
-          <td>{{match.blue_team.name}}</td>
-          <td>{{match.red_team.name}}</td>
-          <td>{{ match.getTeamScore(match.blue_team) }} : {{ match.getTeamScore(match.red_team) }}</td>
-          <td>{{match.date | date:'shortDate' }}</td>
+        <tr *ngFor="#match of matchList">
+          <td class="text-center">
+            <button (click)="delete(match)" type="button" class="btn btn-danger btn-xs glyphicon glyphicon-remove" title="Delete"></button>
+          </td>
+          <td (click)="navigateTo(match)">{{match.blue_team.name}}</td>
+          <td (click)="navigateTo(match)">{{match.red_team.name}}</td>
+          <td (click)="navigateTo(match)">{{ match.getTeamScore(match.blue_team) }} : {{ match.getTeamScore(match.red_team) }}</td>
+          <td (click)="navigateTo(match)">{{match.date | date:'shortDate' }}</td>
         </tr>
       </tbody>
     </table>

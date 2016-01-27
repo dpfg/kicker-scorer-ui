@@ -24,4 +24,10 @@ export class MatchListComponent  {
   navigateTo(match: Match) {
     this.router.navigate(['/GameDetails', { 'id': match.id }]);
   }
+
+  delete(match: Match) {
+
+  }
+
+
 }
