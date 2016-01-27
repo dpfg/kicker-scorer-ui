@@ -1,5 +1,5 @@
 .userpic-container {
-  min-height: 60px;
+  min-height: 70px;
 }
 
 .userpic-container img {
@@ -7,8 +7,17 @@
   right: 10px;
   width: 40px;
   height: 40px;
+  top: 13px;
 }
 
 .list-group-item {
   outline-width: 0;
+}
+
+.switch {
+  text-align: center;
+}
+
+.switch i {
+  transform: rotate(90deg);
 }

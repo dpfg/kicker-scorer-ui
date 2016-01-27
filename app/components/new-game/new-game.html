@@ -24,6 +24,14 @@
           <p class="list-group-item-text text-danger" *ngIf="!blue_team || !blue_team.forward">None</p>
         </a>
       </div>
+
+      <div class="switch">
+        <button (click)="swapTeams()" type="button" class="btn btn-default">
+          <i class="glyphicon glyphicon-transfer"></i>
+          Swap Teams
+        </button>
+      </div>
+
       <h4>Red Team</h4>
       <div class="list-group">
         <a href="#" data-toggle="modal" data-target="#playerSelector" class="list-group-item userpic-container" (click)='select(red_team, 0)'>
@@ -43,7 +51,7 @@
           <p class="list-group-item-text text-danger" *ngIf="!red_team || !red_team.forward">None</p>
         </a>
       </div>
-      <button type="button" class="btn btn-primary btn-block"
+      <button type="button" class="btn btn-primary btn-block btn-lg"
         [disabled]="!validateRequiredTeamSetup()"
         (click)="startMatch()">Start Match</button>
     </form>

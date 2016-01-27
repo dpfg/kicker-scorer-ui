@@ -35,7 +35,7 @@ export class MatchService {
   }
 
   public addGoal(match: Match, team: Team, player?: Player): Observable<MatchGoal> {
-    var requestURI = `${Config.baseURI}/matches/${match.id}/${team.id}/goal`;
+    var requestURI = `${Config.baseURI}/matches/${match.id}/${team.id}/goals`;
     if (player) {
       requestURI += '?player=' + player.id;
     }

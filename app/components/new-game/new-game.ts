@@ -84,4 +84,10 @@ export class NewGameComponent {
   private onError() {
     console.log('on error');
   }
+
+  private swapTeams() {
+    let temp = this.red_team;
+    this.red_team = this.blue_team;
+    this.blue_team = temp;
+  }
 }
