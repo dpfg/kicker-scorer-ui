@@ -12,10 +12,12 @@ import {NewGameComponent} from '../new-game/new-game';
 import {GameDetailsComponent} from '../match-details/match-details';
 import {MatchListComponent} from '../match-list/match-list';
 import {LoginComponent} from '../login/login';
+import {LoadingProgressComponent} from './loader';
 
 import {MenuComponent} from '../menu/menu';
 
 import {checkAuth} from "../../services/auth";
+import {LoaderService} from "../../services/loader";
 
 export class RouteErrorHandler {
   public static router;
@@ -25,7 +27,7 @@ export class RouteErrorHandler {
   selector: 'app',
   templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
-  directives: [MenuComponent, ROUTER_DIRECTIVES]
+  directives: [MenuComponent, ROUTER_DIRECTIVES, LoadingProgressComponent]
 })
 @RouteConfig([
   { path: '/',                as: 'Home',           redirectTo: ['/GetStarted']},
@@ -37,11 +39,15 @@ export class RouteErrorHandler {
   { path: '/about', component: AboutCmp, as: 'About' }
 ])
 export class AppCmp {
-  constructor(router: Router) {
+  constructor(router: Router, private _loader: LoaderService) {
     RouteErrorHandler.router = router;
   }
 
-  isAuthenticated() {
+  public isAuthenticated() {
     return checkAuth();
+  }
+
+  public isLoading(): boolean {
+    return this._loader.isActive();
   }
 }

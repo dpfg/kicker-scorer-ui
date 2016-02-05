@@ -1,7 +1,7 @@
 import {provide, Injectable} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {HTTP_PROVIDERS, BaseRequestOptions} from 'angular2/http';
+import {HTTP_PROVIDERS, Http, XHRBackend, BaseRequestOptions} from 'angular2/http';
 import {AuthHttp, AuthConfig} from './utils/jwt';
 
 
@@ -10,12 +10,16 @@ import {AppCmp} from './components/app/app';
 import {MatchService} from './services/match';
 import {PlayerService} from './services/player';
 import {AuthService} from './services/auth';
-import {RequestOptions} from "angular2/http";
+import {LoaderService} from './services/loader';
+
+import {RequestOptions} from 'angular2/http';
+import {CustomHttp} from './utils/http';
 
 let APP_SERVICES = [
     MatchService,
     PlayerService,
-    AuthService
+    AuthService,
+    LoaderService
 ];
 
 @Injectable()
@@ -41,5 +45,9 @@ bootstrap(AppCmp, [
           });
         }
       }),
-    AuthHttp
+    AuthHttp,
+    provide(CustomHttp,  {
+      useFactory: (backend, defaultOptions, loader) => new CustomHttp(backend, defaultOptions, loader),
+      deps: [XHRBackend, RequestOptions, LoaderService]
+    }),
 ]);

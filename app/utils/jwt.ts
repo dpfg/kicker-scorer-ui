@@ -26,6 +26,7 @@
 import {Injectable, Injector} from 'angular2/core';
 import {Http, HTTP_PROVIDERS, Headers, BaseRequestOptions, Request, RequestOptions, RequestOptionsArgs, RequestMethod, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
+import {CustomHttp} from './http';
 
 // Avoid TS error "cannot find name escape"
 declare var escape: any;
@@ -86,7 +87,7 @@ export class AuthHttp {
     private _config: IAuthConfig;
     public tokenStream: Observable<string>;
 
-    constructor(options: AuthConfig, private http: Http, private _defaultRequestOpts: RequestOptions) {
+    constructor(options: AuthConfig, private http: CustomHttp, private _defaultRequestOpts: RequestOptions) {
         this._config = options.getConfig();
 
         this.tokenStream = new Observable((obs: any) => {

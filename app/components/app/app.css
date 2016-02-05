@@ -19,3 +19,8 @@
   padding-bottom: 40px;
   background-color: #eee;
 }
+
+loading-progress {
+  position: absolute;;
+  top: 50px;
+}
