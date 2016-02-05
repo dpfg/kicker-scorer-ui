@@ -6,6 +6,10 @@ export class Team {
   public name: string;
   public goalkeeper: Player;
   public forward: Player;
+  public color: string;
+
+  public static RED_COLOR = 'red';
+  public static BLUE_COLOR = 'blue';
 
   static fromJSON(json: any): Team {
     let team = new Team();
@@ -40,6 +44,22 @@ export class Team {
 
   hasPlayers(...players: Player[]):boolean {
     return players.filter(p => p.id === this.goalkeeper.id || p.id === this.forward.id).length > 0;
+  }
+
+  public setRedTeam() {
+    this.color = Team.RED_COLOR;
+  }
+
+  public setBlueTeam() {
+    this.color = Team.BLUE_COLOR;
+  }
+
+  public isRedTeam(): boolean {
+    return this.color === Team.RED_COLOR;
+  }
+
+  public isBlueTeam(): boolean {
+    return this.color === Team.BLUE_COLOR;
   }
 
 }

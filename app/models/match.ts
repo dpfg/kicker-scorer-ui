@@ -9,6 +9,8 @@ export class Match {
     public date: Date,
     public completed: boolean) {
 
+    blue_team.setBlueTeam()
+    red_team.setRedTeam();
   }
 
   static fromJSON(data: any): Match {
@@ -22,7 +24,7 @@ export class Match {
     if(data.goals) {
       let goals = data.goals.map( g => MatchGoal.fromJSON(g));
       match.goals = goals;
-    }    
+    }
     return match;
   }
 
