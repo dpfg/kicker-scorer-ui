@@ -7,6 +7,7 @@ import {MatchService} from '../../services/match';
 import {TeamScoreCmp} from './team-score/team-score';
 import {GoalsListCmp} from './goals-list/goals-list';
 import {MatchTimerCmp} from './match-timer';
+import {MatchSummaryComponent} from './match-summary/match-summary';
 import {checkAuthAndRedirect} from "../../services/auth";
 
 @Component({
@@ -15,11 +16,11 @@ import {checkAuthAndRedirect} from "../../services/auth";
 @View({
     templateUrl: './components/match-details/match-details.html',
     styleUrls: ['./components/match-details/match-details.css'],
-    directives: [TeamScoreCmp, GoalsListCmp, MatchTimerCmp]
+    directives: [TeamScoreCmp, GoalsListCmp, MatchTimerCmp, MatchSummaryComponent]
 })
 @CanActivate(() => checkAuthAndRedirect())
 export class GameDetailsComponent {
-    public match:Match = null;// new Match(-1, null, null, new Date());
+    public match:Match = null;
 
     constructor(
         private prms:RouteParams,
@@ -30,7 +31,7 @@ export class GameDetailsComponent {
     }
 
     getTeamScore(team:Team) {
-        return this.match.goals.filter(g => g.team_id === team.id).length;
+        return this.match.goals.filter(g => g.team.id === team.id).length;
     }
 
     addGoal(team:Team, player:Player) {

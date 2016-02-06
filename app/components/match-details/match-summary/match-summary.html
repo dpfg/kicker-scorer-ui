@@ -1,0 +1,8 @@
+<div *ngIf="visible()">
+    <h4>Summary</h4>
+    <ul>
+        <li *ngFor="#result of personalGoals">
+            {{ result.player.username }} : {{ result.score }}
+        </li>
+    </ul>
+</div>

@@ -18,9 +18,8 @@ export class GoalsListCmp {
   }
 
   getPlayerName(goal: MatchGoal): string {
-    let player = this.match.getPlayer(goal.team_id, goal.player_id);
-    if (player) {
-      return player.username;
+    if (goal.player) {
+      return goal.player.username;
     }
     return '';
   }

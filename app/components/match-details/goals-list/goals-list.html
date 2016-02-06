@@ -14,7 +14,7 @@
         <td>
           <button [disabled]="match.completed" (click)="delete(goal)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
         </td>
-        <td>{{ match.getTeam(goal.team_id).name }}</td>
+        <td>{{ goal.team.name }}</td>
         <td>{{ getPlayerName(goal) }}</td>
         <td>{{ goal.created | date:'shortTime' }}</td>
       </tr>

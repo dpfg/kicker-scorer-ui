@@ -39,7 +39,7 @@ export class MatchService {
     if (player) {
       requestURI += '?player=' + player.id;
     }
-    return this.http.post(requestURI, null).map( res => MatchGoal.fromJSON(res.json()));
+    return this.http.post(requestURI, null).map( res => MatchGoal.fromJSON(match, res.json()));
   }
 
   public deleteGoal(goal: MatchGoal): Observable<void> {

@@ -31,6 +31,8 @@
     </div>
   </div>
 
+  <match-summary *ngIf="isScoreComplete() || !match.completed" class="row" [match]="match"></match-summary>
+
   <div *ngIf="match.id !== -1" class="row">
     <goals-list class="col-xs-12" [match]="match"></goals-list>
   </div>
