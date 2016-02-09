@@ -20,28 +20,22 @@ export module MatchStatistic {
   /**
    * Return the list of goals per player.
    */
-  export function getPersonalGoals(match:Match):Array<PlayerResult> {
-    let personalGoals: any = match.goals
+  export function getPersonalGoals(match: Match): Array<PlayerResult> {
+    return _.chain(match.goals)
       .filter(goal => goal.isPersonal())
-      .map(goal => ({player: goal.player, score: 1}))
-      .reduce((acc, item) => {
-        let id = item.player.id;
-        acc[id] ? acc[id].score += item.score : acc[id] = item;
-        return acc;
-      }, {});
-      return _.values(personalGoals).sort((a,b) => a.score > b.score ? -1 : 1);
+      .groupBy(goal => goal.player.id)
+      .map((values, key) => ({player: values[0].player, score: values.length}))
+      .value()
+      .sort((a, b) => a.score > b.score ? -1 : 1);
   }
 
-  export function getTeamGoals(match:Match):Array<TeamResult> {
-    let personalGoals: any = match.goals
+  export function getTeamGoals(match: Match): Array<TeamResult> {
+    return _.chain(match.goals)
       .filter(goal => goal.isNotPersonal())
-      .map(goal => ({team: goal.team, score: 1}))
-      .reduce((acc, item) => {
-        let id = item.team.id;
-        acc[id] ? acc[id].score += item.score : acc[id] = item;
-        return acc;
-      }, {});
-      return _.values(personalGoals).sort((a,b) => a.score > b.score ? -1 : 1);
+      .groupBy(goal => goal.team.id)
+      .map((values, key) => ({team: values[0].team, score: values.length}))
+      .value()
+      .sort((a, b) => a.score > b.score ? -1 : 1);
   }
 
 
