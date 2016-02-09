@@ -43,6 +43,7 @@ export const NPM_DEPENDENCIES = [
 
   { src: 'jquery/dist/jquery.min.js', inject: true, dest: LIB_DEST },
   { src: 'bootstrap/dist/js/bootstrap.min.js', inject: true, dest: LIB_DEST },
+  { src: 'underscore/underscore-min.js', inject: true, dest: LIB_DEST },
 
   // Faster dev page load
   { src: 'rxjs/bundles/Rx.min.js', inject: 'libs', dest: LIB_DEST },

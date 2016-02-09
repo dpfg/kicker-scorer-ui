@@ -75,4 +75,12 @@ export class MatchGoal {
     goal.created = new Date(json.created);
     return goal;
   }
+
+  public isPersonal(): boolean {
+    return this.player !== null;
+  }
+
+  public isNotPersonal(): boolean {
+    return !this.isPersonal();
+  }
 }
