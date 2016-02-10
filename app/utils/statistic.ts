@@ -24,7 +24,7 @@ export module MatchStatistic {
     return _.chain(match.goals)
       .filter(goal => goal.isPersonal())
       .groupBy(goal => goal.player.id)
-      .map((values, key) => ({player: values[0].player, score: values.length}))
+      .map(values => ({player: values[0].player, score: values.length}))
       .value()
       .sort((a, b) => a.score > b.score ? -1 : 1);
   }
@@ -33,7 +33,7 @@ export module MatchStatistic {
     return _.chain(match.goals)
       .filter(goal => goal.isNotPersonal())
       .groupBy(goal => goal.team.id)
-      .map((values, key) => ({team: values[0].team, score: values.length}))
+      .map(values => ({team: values[0].team, score: values.length}))
       .value()
       .sort((a, b) => a.score > b.score ? -1 : 1);
   }
