@@ -4,6 +4,7 @@ import {Match} from '../models/match';
 import {Player} from '../models/player';
 import {Team} from '../models/team';
 
+let _ = require('underscore/underscore');
 
 export module MatchStatistic {
 
