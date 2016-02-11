@@ -23,11 +23,11 @@ export module MatchStatistic {
   /**
    * Return the list of goals per player.
    */
-  export function getPersonalGoals(match: Match): Array<PlayerResult> {
+  export function getPersonalGoals(match: Match): PlayerResult[] {
     return _(match.goals)
       .filter(goal => goal.isPersonal())
       .groupBy(goal => goal.player.id)
-      .map((values) => ({player: _.first(values).player, score: values.length}))
+      .map((values: PlayerResult[]) => ({ player: _.first(values).player, score: values.length }))
       .value()
       .sort((a, b) => a.score > b.score ? -1 : 1);
   }
@@ -36,7 +36,7 @@ export module MatchStatistic {
     return _(match.goals)
       .filter(goal => goal.isNotPersonal())
       .groupBy(goal => goal.team.id)
-      .map(values => ({team:  values[0].team, score: values.length}))
+      .map((values: TeamResult[]) => ({ team: _.first(values).team, score: values.length }))
       .value()
       .sort((a, b) => a.score > b.score ? -1 : 1);
   }
