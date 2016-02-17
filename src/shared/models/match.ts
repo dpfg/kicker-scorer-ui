@@ -70,6 +70,7 @@ export class MatchGoal {
 
   static fromJSON(match: Match, json:any):MatchGoal {
     let goal = new MatchGoal();
+    goal.id = json.id;
     goal.match = match;
     goal.team = match.getTeam(json.team_id);
     goal.player = match.getPlayer(json.team_id, json.player_id);
