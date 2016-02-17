@@ -12,9 +12,9 @@ import {GameDetailsComponent} from '../../match-details/components/match-details
 import {MatchListComponent} from '../../match-list/components/match-list';
 import {LoginComponent} from '../../login/components/login';
 import {MenuComponent} from '../../menu/components/menu';
+import {ProgressBarComponent} from '../../progress-bar/components/progress-bar';
 
 import {checkAuth} from '../../shared/services/auth';
-import {LoaderService} from '../../shared/services/loader';
 
 export class RouteErrorHandler {
   public static router;
@@ -24,7 +24,7 @@ export class RouteErrorHandler {
   selector: 'app',
   templateUrl: './app/components/app.html',
   styleUrls: ['./app/components/app.css'],
-  directives: [MenuComponent, ROUTER_DIRECTIVES]
+  directives: [MenuComponent, ROUTER_DIRECTIVES, ProgressBarComponent]
 })
 @RouteConfig([
   { path: '/',                as: 'Home',           redirectTo: ['/GetStarted']},
@@ -36,15 +36,11 @@ export class RouteErrorHandler {
   { path: '/about', component: AboutCmp, as: 'About' }
 ])
 export class AppCmp {
-  constructor(router: Router, private _loader: LoaderService) {
+  constructor(router: Router) {
     RouteErrorHandler.router = router;
   }
 
   public isAuthenticated() {
     return checkAuth();
-  }
-
-  public isLoading(): boolean {
-    return this._loader.isActive();
   }
 }
