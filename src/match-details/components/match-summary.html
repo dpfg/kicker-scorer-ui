@@ -1,8 +1,9 @@
 <div>
     <h4>Summary</h4>
-    <ul>
+    <ul *ngIf='personalGoals.length > 0'>
         <li *ngFor="#result of personalGoals">
             {{ result.player.username }} : {{ result.score }}
         </li>
-    </ul>   
+    </ul>
+    <span *ngIf='personalGoals.length === 0'>No personal goals</span>
 </div>

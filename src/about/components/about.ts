@@ -8,6 +8,5 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class AboutCmp {
-  newName: string;
-  constructor() {}
+
 }

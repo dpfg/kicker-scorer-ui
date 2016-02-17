@@ -1,9 +1,5 @@
 /// <reference path="../../../typings/browser/ambient/lodash/lodash.d.ts" />
 
-import 'lodash/collection';
-import 'lodash/chain';
-import 'lodash/index';
-
 import {Match} from '../models/match';
 import {Player} from '../models/player';
 import {Team} from '../models/team';

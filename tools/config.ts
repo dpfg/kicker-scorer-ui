@@ -22,7 +22,7 @@ export const HOT_LOADER_PORT      = 5578;
 
 export const BOOTSTRAP_MODULE     = ENABLE_HOT_LOADING ? 'hot_loader_main' : 'main';
 
-export const APP_TITLE            = 'My Angular2 App';
+export const APP_TITLE            = 'Kicker Scorer';
 
 export const APP_SRC              = 'src';
 export const ASSETS_SRC           = `${APP_SRC}/assets`;
@@ -64,14 +64,18 @@ export const DEV_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencie
 
   { src: 'jquery/dist/jquery.min.js', inject: true, dest: JS_DEST },
   { src: 'bootstrap/dist/css/bootstrap.css', inject: true, dest: CSS_DEST },
-  { src: 'bootstrap/dist/js/bootstrap.min.js', inject: true, dest: JS_DEST }
+  { src: 'bootstrap/dist/js/bootstrap.min.js', inject: true, dest: JS_DEST },
+  { src: 'lodash/index.js', inject: true, dest: JS_DEST }
 ]);
 
 export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencies([
   { src: 'reflect-metadata/Reflect.js', inject: 'shims' },
   { src: 'es6-shim/es6-shim.min.js', inject: 'shims' },
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' },
-  { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true }
+  { src: 'jquery/dist/jquery.min.js', inject: true, dest: JS_DEST },
+  { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true },
+  { src: 'bootstrap/dist/js/bootstrap.min.js', inject: true, dest: JS_DEST },
+  { src: 'lodash/index.js', inject: true, dest: JS_DEST }
 ]);
 
 // Declare local files that needs to be injected
